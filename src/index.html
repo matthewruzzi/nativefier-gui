@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8" />
+    <title>Nativefier</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="renderer.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </head>
+
   <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
+    <h1>Create Nativefier App</h1>
+    <br />
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input class="form-control" type="text" id="name" name="name" />
+    </div>
+    <div class="form-group">
+      <label for="url">URL:</label>
+      <input class="form-control" type="url" id="url" name="url" />
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      onclick="createNativefierApp( document.querySelector('#name').value,document.querySelector('#url').value)"
+    >
+      Create Nativefier App
+    </button>
   </body>
 </html>
