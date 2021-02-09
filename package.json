@@ -50,8 +50,41 @@
           "name": "@electron-forge/maker-rpm",
           "config": {}
         }
+      ],
+      "publishers": [
+        {
+          "name": "@electron-forge/publisher-github",
+          "config": {
+            "repository": {
+              "owner": "mattruzzi",
+              "name": "nativefier-gui"
+            },
+            "prerelease": "true"
+          }
+        }
       ]
     }
+  },
+  "build": {
+    "mac": {
+      "publish": [
+        "github"
+      ]
+    },
+    "win": {
+      "publish": [
+        "github"
+      ]
+    },
+    "linux": {
+      "publish": [
+        "github"
+      ]
+    },
+    "files": [
+      "!dist/*",
+      "!out/*"
+    ]
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
@@ -63,7 +96,9 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.54",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "@electron-forge/publisher-github": "^6.0.0-beta.54",
     "electron": "11.2.2",
+    "electron-builder": "^22.9.1",
     "prettier": "2.2.1"
   }
 }
