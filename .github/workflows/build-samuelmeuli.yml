@@ -1,6 +1,6 @@
 name: Build/release
 
-on: push
+#on: push
 
 jobs:
   build-mac:
