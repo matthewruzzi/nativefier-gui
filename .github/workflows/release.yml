@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Build
+name: Release
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -18,7 +18,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build-mac:
+  release-mac:
     # The type of runner that the job will run on
     runs-on: macos-latest
     steps:
@@ -36,13 +36,39 @@ jobs:
         run: yarn build-mac -p ${{ github.event.inputs.release }}
         env: 
           GH_TOKEN: ${{ secrets.github_token }}
-      - name: Upload a Build Artifact
-          uses: actions/upload-artifact@v2.2.2
-            with:
-              # Artifact name
-              name: dist-mac # optional, default is artifact
-              # A file, directory or wildcard pattern that describes what to upload
-              path: dist
-              # The desired behavior if no files are fou
-      
+  release-windows:
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v1
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15
+      - name: Install deps 
+        run: yarn
         
+      - name: Build
+        run: yarn build-windows -p ${{ github.event.inputs.release }}
+        env: 
+          GH_TOKEN: ${{ secrets.github_token }} 
+  release-linux:
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v1
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15
+      - name: Install deps 
+        run: yarn
+        
+      - name: Build
+        run: yarn build-linux -p ${{ github.event.inputs.release }}
+        env: 
+          GH_TOKEN: ${{ secrets.github_token }}
