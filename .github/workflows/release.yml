@@ -66,8 +66,8 @@ jobs:
         with:
           node-version: 15
   
-      - name: Install Snapcraft
-        run: sudo snap install snapcraft --classic
+      - name: Install Snapcraft and Multipass
+        run: sudo snap install snapcraft --classic && sudo snap install multipass
       - name: Install deps 
         run: yarn
     
