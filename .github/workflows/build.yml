@@ -34,4 +34,6 @@ jobs:
         
       - name: build
         run: yarn build-mac
+        env: 
+          GH_TOKEN: ${{ secrets.github_token }}
         
