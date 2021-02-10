@@ -8,11 +8,11 @@ on:
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:
-      name:
+      release:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'Release'
         # Default value if no value is explicitly provided
-        default: 'false'
+        default: 'never'
         # Input has to be provided for the workflow to run
         required: true
 
@@ -33,7 +33,7 @@ jobs:
         run: yarn
         
       - name: build
-        run: yarn build-mac
+        run: yarn build-mac -- -p ${{ github.event.inputs.release }}
         env: 
           GH_TOKEN: ${{ secrets.github_token }}
         
