@@ -32,8 +32,17 @@ jobs:
       - name: Install deps 
         run: yarn
         
-      - name: build
-        run: yarn build-mac -- -p ${{ github.event.inputs.release }}
+      - name: Build
+        run: yarn build-mac -p ${{ github.event.inputs.release }}
         env: 
           GH_TOKEN: ${{ secrets.github_token }}
+      - name: Upload a Build Artifact
+          uses: actions/upload-artifact@v2.2.2
+            with:
+              # Artifact name
+              name: dist-mac # optional, default is artifact
+              # A file, directory or wildcard pattern that describes what to upload
+              path: dist
+              # The desired behavior if no files are fou
+      
         
