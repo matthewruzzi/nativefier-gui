@@ -9,7 +9,10 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "lint": "echo \"No linting configured\"",
+    "build-mac": "electron-builder -m --x64 --arm64",
+    "build-windows": "electron-builder -w --x64 --ia32 --arm64",
+    "build-linux": "electron-builder -l --x64 --ia32 --armv7l --arm64"
   },
   "keywords": [
     "electron",
