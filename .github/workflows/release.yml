@@ -65,9 +65,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 15
+  
+      - name: Install Snapcraft
+        run: sudo snap install snapcraft --classic
       - name: Install deps 
-        run: yarn 
-        
+        run: yarn
+    
       - name: Build
         run: yarn build-linux -p ${{ github.event.inputs.release }}
         env: 
