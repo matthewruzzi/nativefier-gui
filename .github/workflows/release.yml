@@ -70,8 +70,19 @@ jobs:
         run: sudo snap install snapcraft --classic && sudo snap install multipass
       - name: Install deps 
         run: yarn
-    
       - name: Build
-        run: yarn build-linux -p ${{ github.event.inputs.release }}
+        run: |
+          docker run --rm \
+          --env-file <(env | grep -iE 'DEBUG|NODE_|ELECTRON_|YARN_|NPM_|CI|CIRCLE|TRAVIS|APPVEYOR_|CSC_|_TOKEN|_KEY|AWS_|STRIP|BUILD_') \
+          -v ${PWD}:/project \
+          -v ~/.cache/electron:/root/.cache/electron \
+          -v ~/.cache/electron-builder:/root/.cache/electron-builder \
+          electronuserland/builder:wine \
+          /bin/bash -c "yarn && yarn build-linux -p ${{ github.event.inputs.release }}"
         env: 
           GH_TOKEN: ${{ secrets.github_token }}
+
+#      - name: Build
+#        run: yarn build-linux -p ${{ github.event.inputs.release }}
+#        env: 
+#          GH_TOKEN: ${{ secrets.github_token }}
