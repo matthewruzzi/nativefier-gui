@@ -77,7 +77,7 @@ jobs:
           -v ${PWD}:/project \
           -v ~/.cache/electron:/root/.cache/electron \
           -v ~/.cache/electron-builder:/root/.cache/electron-builder \
-          electronuserland/builder:wine \
+          electronuserland/builder \
           /bin/bash -c "yarn && yarn build-linux -p ${{ github.event.inputs.release }}"
         env: 
           GH_TOKEN: ${{ secrets.github_token }}
