@@ -64,17 +64,17 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
            name: nativefier-gui-win32-x64
-           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-win32-x64
+           path: D:\a\nativefier-gui\nativefier-gui\nativefier-gui-win32-x64
       - name: Upload Windows arm64 Build
         uses: actions/upload-artifact@v2
         with:
            name: nativefier-gui-win32-arm64
-           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-win32-arm64
+           path: D:\a\nativefier-gui\nativefier-gui\nativefier-gui-win32-arm64
       - name: Upload Windows ia32 Build
         uses: actions/upload-artifact@v2
         with:
            name: nativefier-gui-win32-ia32
-           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-win32-ia32
+           path: D:\a\nativefier-gui\nativefier-gui\nativefier-gui-win32-ia32
   release-linux:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
