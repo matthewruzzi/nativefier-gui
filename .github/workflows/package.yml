@@ -34,18 +34,16 @@ jobs:
         
       - name: Package
         run: electron-packager . --arch=x64 && electron-packager . --arch=arm64
-      - name: Zip builds
-        run: ls && zip nativefier-gui-darwin-x64.zip -r nativefier-gui-darwin-x64 && zip nativefier-gui-darwin-arm64.zip -r nativefier-gui-darwin-arm64
       - name: Upload Mac x64 Build
         uses: actions/upload-artifact@v2
         with:
            name: nativefier-gui-darwin-x64
-           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-darwin-x64.zip
+           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-darwin-x64
       - name: Upload Mac arm64 Build
         uses: actions/upload-artifact@v2
         with:
            name: nativefier-gui-darwin-arm64
-           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-darwin-arm64.zip
+           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-darwin-arm64
   package-windows:
     # The type of runner that the job will run on
     runs-on: windows-latest
@@ -62,23 +60,21 @@ jobs:
         
       - name: Package
         run: electron-packager . --arch=x64 && electron-packager . --arch=arm64  && electron-packager . --arch=ia32
-      - name: Zip builds
-        run: dir && tar.exe -a -c -f nativefier-gui-win32-x64.zip nativefier-gui-win32-x64 & tar.exe -a -c -f nativefier-gui-win32-arm64.zip nativefier-gui-win32-arm64 & tar.exe -a -c -f nativefier-gui-win32-ia32.zip nativefier-gui-win32-ia32
       - name: Upload Windows x64 Build
         uses: actions/upload-artifact@v2
         with:
            name: nativefier-gui-win32-x64
-           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-win32-x64.zip
+           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-win32-x64
       - name: Upload Windows arm64 Build
         uses: actions/upload-artifact@v2
         with:
            name: nativefier-gui-win32-arm64
-           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-win32-arm64.zip
+           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-win32-arm64
       - name: Upload Windows ia32 Build
         uses: actions/upload-artifact@v2
         with:
            name: nativefier-gui-win32-ia32
-           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-win32-ia32.zip
+           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-win32-ia32
   release-linux:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -94,25 +90,23 @@ jobs:
         run: yarn && npm install electron-packager -g
       - name: Package
         run: electron-packager . --arch=x64 && electron-packager . --arch=arm64  && electron-packager . --arch=ia32 && electron-packager . --arch=armv7l
-      - name: Zip builds
-        run: ls && zip nativefier-gui-linux-x64.zip -r nativefier-gui-linux-x64 && zip nativefier-gui-linux-arm64.zip -r nativefier-gui-linux-arm64 && zip nativefier-gui-linux-ia32.zip -r nativefier-gui-linux-ia32 && zip nativefier-gui-linux-armv7l.zip -r nativefier-gui-linux-armv7l
       - name: Upload Linux x64 Build
         uses: actions/upload-artifact@v2
         with:
            name: nativefier-gui-linux-x64
-           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-linux-x64.zip
+           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-linux-x64
       - name: Upload Linux arm64 Build
         uses: actions/upload-artifact@v2
         with:
            name: nativefier-gui-linux-arm64
-           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-linux-arm64.zip
+           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-linux-arm64
       - name: Upload Linux ia32 Build
         uses: actions/upload-artifact@v2
         with:
            name: nativefier-gui-linux-x64
-           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-linux-x64.zip
+           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-linux-x64
       - name: Upload Linux armv7l Build
         uses: actions/upload-artifact@v2
         with:
            name: nativefier-gui-linux-armv7l
-           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-linux-armv7l.zip
+           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-linux-armv7l
