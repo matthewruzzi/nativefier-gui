@@ -35,7 +35,7 @@ jobs:
       - name: Package
         run: electron-packager . --arch=x64 && electron-packager . --arch=arm64
       - name: Zip builds
-        run: zip nativefier-gui-darwin-x64 -r nativefier-gui-darwin-x64.zip && zip nativefier-gui-darwin-arm64 -r nativefier-gui-darwin-arm64.zip
+        run: zip nativefier-gui-darwin-x64.zip -r nativefier-gui-darwin-x64 && zip nativefier-gui-darwin-arm64.zip -r nativefier-gui-darwin-arm64
       - name: Upload Mac x64 Build
         uses: actions/upload-artifact@v2
         with:
@@ -95,7 +95,7 @@ jobs:
       - name: Package
         run: electron-packager . --arch=x64 && electron-packager . --arch=arm64  && electron-packager . --arch=ia32 && electron-packager . --arch=armv7l
       - name: Zip builds
-        run: ls && zip nativefier-gui-linux-x64 -r nativefier-gui-linux-x64.zip && zip nativefier-gui-linux-arm64 -r nativefier-gui-linux-arm64.zip && zip nativefier-gui-linux-ia32 -r nativefier-gui-linux-ia32.zip && zip nativefier-gui-linux-armv7l -r nativefier-gui-linux-armv7l.zip
+        run: ls && zip nativefier-gui-linux-x64.zip -r nativefier-gui-linux-x64 && zip nativefier-gui-linux-arm64.zip -r nativefier-gui-linux-arm64 && zip nativefier-gui-linux-ia32.zip -r nativefier-gui-linux-ia32 && zip nativefier-gui-linux-armv7l.zip -r nativefier-gui-linux-armv7l
       - name: Upload Linux x64 Build
         uses: actions/upload-artifact@v2
         with:
