@@ -63,7 +63,7 @@ jobs:
       - name: Package
         run: electron-packager . --arch=x64 && electron-packager . --arch=arm64  && electron-packager . --arch=ia32
       - name: Zip builds
-        run: tar.exe -a -c -f nativefier-gui-win32-x64.zip nativefier-gui-win32-x64 & tar.exe -a -c -f nativefier-gui-win32-arm64.zip nativefier-gui-win32-arm64 & tar.exe -a -c -f nativefier-gui-win32-ia32.zip nativefier-gui-win32-ia32
+        run: dir && tar.exe -a -c -f nativefier-gui-win32-x64.zip nativefier-gui-win32-x64 & tar.exe -a -c -f nativefier-gui-win32-arm64.zip nativefier-gui-win32-arm64 & tar.exe -a -c -f nativefier-gui-win32-ia32.zip nativefier-gui-win32-ia32
       - name: Upload Windows x64 Build
         uses: actions/upload-artifact@v2
         with:
@@ -95,7 +95,7 @@ jobs:
       - name: Package
         run: electron-packager . --arch=x64 && electron-packager . --arch=arm64  && electron-packager . --arch=ia32 && electron-packager . --arch=armv7l
       - name: Zip builds
-        run: zip nativefier-gui-linux-x64 -r nativefier-gui-linux-x64.zip && zip nativefier-gui-linux-arm64 -r nativefier-gui-linux-arm64.zip && zip nativefier-gui-linux-ia32 -r nativefier-gui-linux-ia32.zip && zip nativefier-gui-linux-armv7l -r nativefier-gui-linux-armv7l.zip
+        run: ls && zip nativefier-gui-linux-x64 -r nativefier-gui-linux-x64.zip && zip nativefier-gui-linux-arm64 -r nativefier-gui-linux-arm64.zip && zip nativefier-gui-linux-ia32 -r nativefier-gui-linux-ia32.zip && zip nativefier-gui-linux-armv7l -r nativefier-gui-linux-armv7l.zip
       - name: Upload Linux x64 Build
         uses: actions/upload-artifact@v2
         with:
