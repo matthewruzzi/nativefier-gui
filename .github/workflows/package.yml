@@ -63,7 +63,7 @@ jobs:
       - name: Package
         run: electron-packager . --arch=x64 && electron-packager . --arch=arm64  && electron-packager . --arch=ia32
       - name: Zip builds
-        run: zip nativefier-gui-win32-x64 -r nativefier-gui-win32-x64.zip && zip nativefier-gui-win32-arm64 -r nativefier-gui-win32-arm64.zip && zip nativefier-gui-win32-ia32 -r nativefier-gui-win32-ia32.zip
+        run: tar.exe -a -c -f nativefier-gui-win32-x64.zip nativefier-gui-win32-x64 & tar.exe -a -c -f nativefier-gui-win32-arm64.zip nativefier-gui-win32-arm64 & tar.exe -a -c -f nativefier-gui-win32-ia32.zip nativefier-gui-win32-ia32
       - name: Upload Windows x64 Build
         uses: actions/upload-artifact@v2
         with:
