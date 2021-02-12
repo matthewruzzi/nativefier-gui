@@ -35,7 +35,7 @@ jobs:
       - name: Package
         run: electron-packager . --arch=x64 && electron-packager . --arch=arm64
       - name: Zip builds
-        run: zip nativefier-gui-darwin-x64.zip -r nativefier-gui-darwin-x64 && zip nativefier-gui-darwin-arm64.zip -r nativefier-gui-darwin-arm64
+        run: ls && zip nativefier-gui-darwin-x64.zip -r nativefier-gui-darwin-x64 && zip nativefier-gui-darwin-arm64.zip -r nativefier-gui-darwin-arm64
       - name: Upload Mac x64 Build
         uses: actions/upload-artifact@v2
         with:
