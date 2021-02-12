@@ -38,12 +38,12 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
            name: nativefier-gui-darwin-x64
-           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-darwin-x64
+           path: /Users/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-darwin-x64
       - name: Upload Mac arm64 Build
         uses: actions/upload-artifact@v2
         with:
            name: nativefier-gui-darwin-arm64
-           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-darwin-arm64
+           path: /Users/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-darwin-arm64
   package-windows:
     # The type of runner that the job will run on
     runs-on: windows-latest
