@@ -1,0 +1,112 @@
+# This is a basic workflow that is manually triggered
+
+name: Package
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      release:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Release'
+        # Default value if no value is explicitly provided
+        default: 'never'
+        # Input has to be provided for the workflow to run
+        required: true
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  package-mac:
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v1
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15
+      - name: Install deps 
+        run: yarn && npm install electron-packager -g
+        
+      - name: Package
+        run: electron-packager . --arch=x64 && electron-packager . --arch=arm64
+      - name: Upload Mac x64 Build
+        uses: actions/upload-artifact@v2
+        with:
+           name: nativefier-gui-darwin-x64
+           path: /Users/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-darwin-x64
+      - name: Upload Mac arm64 Build
+        uses: actions/upload-artifact@v2
+        with:
+           name: nativefier-gui-darwin-arm64
+           path: /Users/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-darwin-arm64
+  package-windows:
+    # The type of runner that the job will run on
+    runs-on: windows-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v1
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15
+      - name: Install deps 
+        run: yarn && npm install electron-packager -g
+        
+      - name: Package
+        run: electron-packager . --arch=x64 && electron-packager . --arch=arm64  && electron-packager . --arch=ia32
+      - name: Upload Windows x64 Build
+        uses: actions/upload-artifact@v2
+        with:
+           name: nativefier-gui-win32-x64
+           path: D:\a\nativefier-gui\nativefier-gui\nativefier-gui-win32-x64
+      - name: Upload Windows arm64 Build
+        uses: actions/upload-artifact@v2
+        with:
+           name: nativefier-gui-win32-arm64
+           path: D:\a\nativefier-gui\nativefier-gui\nativefier-gui-win32-arm64
+      - name: Upload Windows ia32 Build
+        uses: actions/upload-artifact@v2
+        with:
+           name: nativefier-gui-win32-ia32
+           path: D:\a\nativefier-gui\nativefier-gui\nativefier-gui-win32-ia32
+  release-linux:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v1
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15
+      - name: Install deps 
+        run: yarn && npm install electron-packager -g
+      - name: Package
+        run: electron-packager . --arch=x64 && electron-packager . --arch=arm64  && electron-packager . --arch=ia32 && electron-packager . --arch=armv7l
+      - name: Upload Linux x64 Build
+        uses: actions/upload-artifact@v2
+        with:
+           name: nativefier-gui-linux-x64
+           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-linux-x64
+      - name: Upload Linux arm64 Build
+        uses: actions/upload-artifact@v2
+        with:
+           name: nativefier-gui-linux-arm64
+           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-linux-arm64
+      - name: Upload Linux ia32 Build
+        uses: actions/upload-artifact@v2
+        with:
+           name: nativefier-gui-linux-x64
+           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-linux-x64
+      - name: Upload Linux armv7l Build
+        uses: actions/upload-artifact@v2
+        with:
+           name: nativefier-gui-linux-armv7l
+           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-linux-armv7l

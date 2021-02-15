@@ -1,0 +1,88 @@
+# This is a basic workflow that is manually triggered
+
+name: Release
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      release:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Release'
+        # Default value if no value is explicitly provided
+        default: 'never'
+        # Input has to be provided for the workflow to run
+        required: true
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  release-mac:
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v1
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15
+      - name: Install deps 
+        run: yarn
+        
+      - name: Build
+        run: yarn build-mac -p ${{ github.event.inputs.release }}
+        env: 
+          GH_TOKEN: ${{ secrets.github_token }}
+  release-windows:
+    # The type of runner that the job will run on
+    runs-on: windows-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v1
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15
+      - name: Install deps 
+        run: yarn
+        
+      - name: Build
+        run: yarn build-windows -p ${{ github.event.inputs.release }}
+        env: 
+          GH_TOKEN: ${{ secrets.github_token }} 
+  release-linux:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v1
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15
+  
+      - name: Install Snapcraft and Multipass
+        run: sudo snap install snapcraft --classic && sudo snap install multipass
+      - name: Install deps 
+        run: yarn
+      - name: Build
+        run: |
+          docker run --rm \
+          --env-file <(env | grep -iE 'DEBUG|NODE_|ELECTRON_|YARN_|NPM_|CI|CIRCLE|TRAVIS|APPVEYOR_|CSC_|_TOKEN|_KEY|AWS_|STRIP|BUILD_') \
+          -v ${PWD}:/project \
+          -v ~/.cache/electron:/root/.cache/electron \
+          -v ~/.cache/electron-builder:/root/.cache/electron-builder \
+          electronuserland/builder \
+          /bin/bash -c "yarn && yarn build-linux -p ${{ github.event.inputs.release }}"
+        env: 
+          GH_TOKEN: ${{ secrets.github_token }}
+
+#      - name: Build
+#        run: yarn build-linux -p ${{ github.event.inputs.release }}
+#        env: 
+#          GH_TOKEN: ${{ secrets.github_token }}
