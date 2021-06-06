@@ -1,6 +1,7 @@
-const { app, BrowserWindow, dialog, ipcMain } = require("electron");
+const { app, BrowserWindow, dialog, ipcMain, Menu } = require("electron");
 const path = require("path");
 var nativefier = require("nativefier").default;
+const menu = require('./menu');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
@@ -24,6 +25,7 @@ const createWindow = () => {
 
   // Open the DevTools.
   //mainWindow.webContents.openDevTools();
+  Menu.setApplicationMenu(menu);
 };
 
 // This method will be called when Electron has finished
@@ -78,3 +80,5 @@ ipcMain.on("create-app", (event, arg) => {
     });
   }
 });
+
+
