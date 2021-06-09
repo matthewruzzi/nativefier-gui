@@ -92,7 +92,7 @@
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
     "electron-util": "^0.16.0",
-    "nativefier": "^44.0.0"
+    "nativefier": "^44.0.2"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.57",
@@ -103,6 +103,6 @@
     "@electron-forge/publisher-github": "^6.0.0-beta.57",
     "electron": "13.1.1",
     "electron-builder": "^22.11.1",
-    "prettier": "2.3.0"
+    "prettier": "2.3.1"
   }
 }
