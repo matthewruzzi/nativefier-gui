@@ -1,6 +1,6 @@
 # nativefier-gui
 
-Graphical user interface for [nativefier](https://github.com/nativefier/nativefier).
+Graphical user interface for [nativefier](https://github.com/nativefier/nativefier). Make any web page a desktop application. 
 ![](screenshot.png)
 
 ## Downloads
