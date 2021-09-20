@@ -12,7 +12,9 @@
     "lint": "echo \"No linting configured\"",
     "build-mac": "electron-builder -m --x64 --arm64",
     "build-windows": "electron-builder -w --x64 --ia32 --arm64",
-    "build-linux": "electron-builder -l --x64 --ia32 --armv7l --arm64"
+    "build-linux": "electron-builder -l --x64 --ia32 --armv7l --arm64",
+    "package-mac": "electron-packager . --arch=x64 && electron-packager . --arch=arm64",
+    "clean": "trash node_modules nativefier-gui-darwin-x64 nativefier-gui-darwin-x64.zip nativefier-gui-darwin-arm64 nativefier-gui-darwin-arm64.zip"
   },
   "keywords": [
     "electron",
@@ -91,7 +93,8 @@
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
-    "nativefier": "^45.0.0"
+    "nativefier": "^45.0.0",
+    "trash-cli": "^4.0.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.61",
