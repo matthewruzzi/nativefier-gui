@@ -1,7 +1,7 @@
 {
   "name": "nativefier-gui",
   "productName": "nativefier-gui",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Make any web page a desktop application.",
   "main": "src/index.js",
   "scripts": {
