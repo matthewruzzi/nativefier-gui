@@ -13,7 +13,7 @@
     "build-mac": "electron-builder -m --x64 --arm64",
     "build-windows": "electron-builder -w --x64 --ia32 --arm64",
     "build-linux": "electron-builder -l --x64 --ia32 --armv7l --arm64",
-    "package-mac": "electron-packager . --arch=x64 && electron-packager . --arch=arm64",
+    "package-mac": "electron-packager . --arch=x64 --platform=darwin --overwrite && electron-packager . --arch=arm64 --platform=darwin --overwrite",
     "clean": "trash node_modules nativefier-gui-darwin-x64 nativefier-gui-darwin-x64.zip nativefier-gui-darwin-arm64 nativefier-gui-darwin-arm64.zip"
   },
   "keywords": [
