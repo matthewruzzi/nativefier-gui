@@ -88,6 +88,9 @@ typings/
 # Electron-Forge
 out/
 
+# Electron-Builder
+dist/
+
 # Mac Builds
 nativefier-gui-darwin-x64/
 nativefier-gui-darwin-arm64/
