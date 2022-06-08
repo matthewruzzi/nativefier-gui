@@ -28,7 +28,7 @@ jobs:
       - name: Install Node.js, NPM and Yarn
         uses: actions/setup-node@v1
         with:
-          node-version: 15
+          node-version: 18
       - name: Install deps 
         run: yarn
         
@@ -46,7 +46,7 @@ jobs:
       - name: Install Node.js, NPM and Yarn
         uses: actions/setup-node@v1
         with:
-          node-version: 15
+          node-version: 18
       - name: Install deps 
         run: yarn
         
@@ -64,7 +64,7 @@ jobs:
       - name: Install Node.js, NPM and Yarn
         uses: actions/setup-node@v1
         with:
-          node-version: 15
+          node-version: 18
   
       - name: Install Snapcraft and Multipass
         run: sudo snap install snapcraft --classic && sudo snap install multipass
