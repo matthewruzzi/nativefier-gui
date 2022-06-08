@@ -90,7 +90,7 @@ jobs:
       - name: Install deps 
         run: yarn && npm install electron-packager -g
       - name: Package
-        run: electron-packager . --arch=x64 && electron-packager . --arch=arm64  && electron-packager . --arch=ia32 && electron-packager . --arch=armv7l
+        run: electron-packager . --arch=x64 && electron-packager . --arch=arm64 && electron-packager . --arch=armv7l
       - name: Upload Linux x64 Build
         uses: actions/upload-artifact@v2
         with:
@@ -101,11 +101,6 @@ jobs:
         with:
            name: nativefier-gui-linux-arm64
            path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-linux-arm64
-      - name: Upload Linux ia32 Build
-        uses: actions/upload-artifact@v2
-        with:
-           name: nativefier-gui-linux-x64
-           path: /home/runner/work/nativefier-gui/nativefier-gui/nativefier-gui-linux-x64
       - name: Upload Linux armv7l Build
         uses: actions/upload-artifact@v2
         with:
