@@ -105,6 +105,6 @@
     "@electron-forge/publisher-github": "^6.0.0-beta.65",
     "electron": "^25.2.0",
     "electron-builder": "^24.4.0",
-    "prettier": "^2.8.8"
+    "prettier": "^3.0.3"
   }
 }
