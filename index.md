@@ -1,3 +1,6 @@
+> [!WARNING]
+> nativefier-gui is based on nativefier, which is [unmaintained](https://github.com/nativefier/nativefier/issues/1577). nativefier-gui is no longer supported and will not receive any updates. 
+
 <img src="screenshot.png" height="400">
 
 ## Downloads
